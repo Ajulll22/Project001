@@ -256,7 +256,7 @@
                     $.LoadingOverlay("show");
                     $.ajax({
                         type: 'DELETE',
-                        url: `/balita/${id}`,
+                        url: `/remaja/${id}`,
                         datatype: "json",
                         headers: {
                             'X-CSRF-TOKEN': "{{ csrf_token() }}"
@@ -335,7 +335,7 @@
             });
 
             $.ajax({
-                url: '{{ route("balita_store") }}',
+                url: '{{ route("remaja_store") }}',
                 method: 'POST',
                 data,
                 datatype: "json",
@@ -375,7 +375,7 @@
             });
 
             $.ajax({
-                url: `/balita/${data.id}`,
+                url: `/remaja/${data.id}`,
                 method: 'PUT',
                 data,
                 datatype: "json",
@@ -418,7 +418,7 @@
             data.immunizations = immunizations;
 
             $.ajax({
-                url: "{{ route('balita_present') }}",
+                url: "{{ route('remaja_present') }}",
                 method: 'POST',
                 data,
                 datatype: "json",
@@ -460,7 +460,7 @@
             });
             data.immunizations = immunizations;
             $.ajax({
-                url: `/balita/present/${data.id}`,
+                url: `/remaja/present/${data.id}`,
                 method: 'PUT',
                 data,
                 datatype: "json",
@@ -489,7 +489,7 @@
 
 @section('content')
     <div class="d-flex justify-content-between mb-3">
-        <h3 class="my-auto">List Balita</h3>
+        <h3 class="my-auto">List Remaja</h3>
         <ul style="gap: 4px" class="nav nav-pills" role="tablist">
             <li class="nav-item active me-1">
                 <a class="nav-link p-1 px-2 active" title="List Tree" data-toggle="tab"

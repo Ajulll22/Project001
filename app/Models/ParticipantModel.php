@@ -27,6 +27,11 @@ class ParticipantModel extends Model
 
     public function detail()
     {
-        return $this->hasOne(ParticipantDetail::class, "participant_id", "id")->latestOfMany();
+        return $this->hasOne(ParticipantDetailModel::class, "participant_id", "id")->latestOfMany();
+    }
+
+    public function immunizations()
+    {
+       return $this->hasMany(ParticipantImmunizationModel::class, "participant_id", "id" ) ;
     }
 }

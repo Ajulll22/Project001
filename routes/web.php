@@ -4,6 +4,7 @@ use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\BalitaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ParentController;
+use App\Http\Controllers\RemajaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,15 @@ Route::middleware(['auth'])->group( function () {
     Route::post("/balita", [BalitaController::class, "store"])->name("balita_store");
     Route::put("/balita/{participant}", [BalitaController::class, "update"])->name("balita_update");
     Route::delete("/balita/{participant}", [BalitaController::class, "destroy"])->name("balita_destroy");
+    Route::post("/balita/present", [BalitaController::class, "present"])->name("balita_present");
+    Route::put("/balita/present/{detail}", [BalitaController::class, "present_update"])->name("balita_present_update");
+
+    Route::get("/remaja", [RemajaController::class, "index"])->name("remaja");
+    Route::post("/remaja", [RemajaController::class, "store"])->name("remaja_store");
+    Route::put("/remaja/{participant}", [RemajaController::class, "update"])->name("remaja_update");
+    Route::delete("/remaja/{participant}", [RemajaController::class, "destroy"])->name("remaja_destroy");
+    Route::post("/remaja/present", [RemajaController::class, "present"])->name("remaja_present");
+    Route::put("/remaja/present/{detail}", [RemajaController::class, "present_update"])->name("remaja_present_update");
 
     Route::get("/parent", [ParentController::class, "get_parent"])->name("parent");
 } );
