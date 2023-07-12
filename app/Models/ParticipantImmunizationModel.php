@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ParticipantDetail extends Model
+class ParticipantImmunizationModel extends Model
 {
     use HasFactory;
 
-    protected $table = "participant_details";
+    protected $table = "participant_immunizations";
 
     protected $casts = [
         'created_at' => 'datetime:d:m:Y H:i:s',
@@ -17,15 +17,7 @@ class ParticipantDetail extends Model
     ];
 
     protected $fillable = [
-        "weight",
-        "height",
-        "immunization",
-        "vit",
         "participant_id",
-        "event_id",
+        "immunization_id",
     ];
-
-    public function event() {
-        return $this->belongsTo(EventModel::class, "event_id", "id");
-    }
 }

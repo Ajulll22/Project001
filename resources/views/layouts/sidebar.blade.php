@@ -28,17 +28,17 @@
     </div>
 
     <li class="nav-item {{ $menu == "balita" ? "active" : "" }}">
-        <a href="{{ route("balita") }}" class="nav-link" href="charts.html">
+        <a href="{{ route("balita") }}" class="nav-link">
             <i class="fa fa-baby"></i>
             <span>Balita</span></a>
     </li>
     <li class="nav-item {{ $menu == "remaja" ? "active" : "" }}">
-        <a class="nav-link" href="charts.html">
+        <a href="{{ route("remaja") }}" class="nav-link">
             <i class="fa fa-child"></i>
             <span>Remaja</span></a>
     </li>
     <li class="nav-item {{ $menu == "lansia" ? "active" : "" }}">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link">
             <i class="fa fa-person-booth"></i>
             <span>Lansia</span></a>
     </li>
