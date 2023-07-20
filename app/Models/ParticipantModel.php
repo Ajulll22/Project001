@@ -34,4 +34,9 @@ class ParticipantModel extends Model
     {
        return $this->hasMany(ParticipantImmunizationModel::class, "participant_id", "id" ) ;
     }
+
+    public function parent()
+    {
+        return $this->belongsTo(ParentModel::class, "parent_id", "id");
+    }
 }

@@ -16,6 +16,7 @@ class CreateImmunizationsTable extends Migration
         Schema::create('immunizations', function (Blueprint $table) {
             $table->id();
             $table->string("name");
+            $table->string("code");
             $table->tinyInteger("type");
             $table->timestamps();
         });

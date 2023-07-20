@@ -10,10 +10,10 @@ use App\Models\ParticipantImmunizationModel;
 use App\Models\ParticipantModel;
 use Illuminate\Http\Request;
 
-class RemajaController extends Controller
+class LansiaController extends Controller
 {
     public function __construct() {
-        $this->menu = "remaja";
+        $this->menu = "lansia";
         $this->sub_menu = "";
     }
     
@@ -23,25 +23,25 @@ class RemajaController extends Controller
 
         $list_participants = $this->get_data();
         $list_parents = ParentController::get_parent();
-        $list_immunizations = ImmunizationModel::where("type", 2)->get();
+        $list_immunizations = ImmunizationModel::where("type", 3)->get();
 
         // dd($list_participants);
 
         $data["list_participants"] = $list_participants;
         $data["list_parents"] = $list_parents;
         $data["list_immunizations"] = $list_immunizations;
-        return view('pages.remaja', $data);
+        return view('pages.lansia', $data);
     }
 
     public function get_data() {
-        $present = ParticipantModel::with("detail", "immunizations")->where("type", 2)->whereHas("detail.event", function ($query){
+        $present = ParticipantModel::with("detail", "immunizations")->where("type", 3)->whereHas("detail.event", function ($query){
             return $query->where("event_day", "=", date("Y-m-d"));
         })->get();
         $not_present = ParticipantModel::with("detail", "immunizations")->where(function ($query1) {
             $query1->doesntHave('detail')->orWhereHas("detail.event", function ($query2){
                 return $query2->where("event_day", "!=", date("Y-m-d"));
             });
-        })->where("type", 2)->get();
+        })->where("type", 3)->get();
 
         return [
             "present" => $present->toArray(),
@@ -59,7 +59,7 @@ class RemajaController extends Controller
             $data["parent_id"] = $parent->id;
             unset($data["full_name_parent"]);
         }
-        $data["type"] = 2;
+        $data["type"] = 3;
 
         ParticipantModel::create($data);
 

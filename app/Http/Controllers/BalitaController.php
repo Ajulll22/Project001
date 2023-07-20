@@ -14,10 +14,12 @@ class BalitaController extends Controller
 {
     public function __construct() {
         $this->menu = "balita";
+        $this->sub_menu = "";
     }
     
     function index() {
         $data["menu"] = $this->menu;
+        $data["sub_menu"] = $this->sub_menu;
 
         $list_participants = $this->get_data();
         $list_parents = ParentController::get_parent();
