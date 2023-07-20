@@ -26,4 +26,8 @@ class ParticipantDetailModel extends Model
     public function event() {
         return $this->belongsTo(EventModel::class, "event_id", "id");
     }
+
+    public function detail() {
+        return $this->hasOne(ParticipantModel::class, "id", "participant_id");
+    }
 }

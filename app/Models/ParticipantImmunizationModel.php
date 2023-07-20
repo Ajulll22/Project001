@@ -20,4 +20,9 @@ class ParticipantImmunizationModel extends Model
         "participant_id",
         "immunization_id",
     ];
+
+    public function detail()
+    {
+        return $this->belongsTo(ImmunizationModel::class, "immunization_id", "id");
+    }
 }

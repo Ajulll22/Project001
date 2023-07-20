@@ -3,6 +3,10 @@
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\BalitaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LansiaController;
+use App\Http\Controllers\laporan\BalitaReportController;
+use App\Http\Controllers\laporan\LansiaReportController;
+use App\Http\Controllers\laporan\RemajaReportController;
 use App\Http\Controllers\ParentController;
 use App\Http\Controllers\RemajaController;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +41,17 @@ Route::middleware(['auth'])->group( function () {
     Route::delete("/remaja/{participant}", [RemajaController::class, "destroy"])->name("remaja_destroy");
     Route::post("/remaja/present", [RemajaController::class, "present"])->name("remaja_present");
     Route::put("/remaja/present/{detail}", [RemajaController::class, "present_update"])->name("remaja_present_update");
+
+    Route::get("/lansia", [LansiaController::class, "index"])->name("lansia");
+    Route::post("/lansia", [LansiaController::class, "store"])->name("lansia_store");
+    Route::put("/lansia/{participant}", [LansiaController::class, "update"])->name("lansia_update");
+    Route::delete("/lansia/{participant}", [LansiaController::class, "destroy"])->name("lansia_destroy");
+    Route::post("/lansia/present", [LansiaController::class, "present"])->name("lansia_present");
+    Route::put("/lansia/present/{detail}", [LansiaController::class, "present_update"])->name("lansia_present_update");
+
+    Route::get("/laporan/balita", [BalitaReportController::class, "index"])->name("laporan_balita");
+    Route::get("/laporan/remaja", [RemajaReportController::class, "index"])->name("laporan_remaja");
+    Route::get("/laporan/lansia", [LansiaReportController::class, "index"])->name("laporan_lansia");
 
     Route::get("/parent", [ParentController::class, "get_parent"])->name("parent");
 } );

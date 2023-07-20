@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -38,7 +38,7 @@
             <span>Remaja</span></a>
     </li>
     <li class="nav-item {{ $menu == "lansia" ? "active" : "" }}">
-        <a class="nav-link">
+        <a href="{{ route("lansia") }}" class="nav-link">
             <i class="fa fa-person-booth"></i>
             <span>Lansia</span></a>
     </li>
@@ -48,14 +48,24 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        User Management
+        Setting
     </div>
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+    <li class="nav-item {{ $menu == "laporan" ? "active" : "" }}">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseLaporan" aria-expanded="true"
+            aria-controls="collapseLaporan">
             <i class="fa fa-fw fa-table"></i>
-            <span>User</span></a>
+            <span>Laporan</span>
+        </a>
+        <div id="collapseLaporan" class="collapse {{ $menu == "laporan" ? "show" : "" }}" aria-labelledby="headingTwo"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a href="{{ route("laporan_balita") }}" class="collapse-item {{ $sub_menu == "balita" ? "active" : "" }}">Balita</a>
+                <a href="{{ route("laporan_remaja") }}" class="collapse-item {{ $sub_menu == "remaja" ? "active" : "" }}">Remaja</a>
+                <a href="{{ route("laporan_lansia") }}" class="collapse-item {{ $sub_menu == "lansia" ? "active" : "" }}">Lansia</a>
+            </div>
+        </div>
     </li>
 
     <!-- Divider -->
